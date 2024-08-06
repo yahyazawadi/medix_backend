@@ -13,7 +13,7 @@ import ratingRoutes from './routers/ratingRoutes.js';
 import linkRoutes from './routers/linkRoutes.js';
 import http from 'http';
 import logger from './middleware/logger.js';
-import dataRoutes from './routers/dataRoutes.js'; // New import
+//import dataRoutes from './routers/dataRoutes.js'; // New import
 import errorHandler from './middleware/errorHandler.js';
 import cookieParser from 'cookie-parser';
 //import corsOptions from './config/corsOptions.js';
