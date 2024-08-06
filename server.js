@@ -13,22 +13,34 @@ import ratingRoutes from './routers/ratingRoutes.js';
 import linkRoutes from './routers/linkRoutes.js';
 import http from 'http';
 import logger from './middleware/logger.js';
-
+import dataRoutes from './routers/dataRoutes.js'; // New import
 import errorHandler from './middleware/errorHandler.js';
 import cookieParser from 'cookie-parser';
-import corsOptions from './config/corsOptions.js';
+//import corsOptions from './config/corsOptions.js';
 import connectDB from './config/dbConn.js';
 import logEvents from './middleware/logger2.js';
 
 const app = express();
-
+const corsOptions = {
+    origin: ['http://localhost:3000', 'https://medix-frontend-i0pq.onrender.com'],
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.) to be sent
+    optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+  };
+  
+  app.use(cors(corsOptions));
 app.use(express.json());
 // Apply CORS with options here
 app.use(cors(corsOptions));
 // app.use(cors({ origin: 'https://medix-backend-k0q1.onrender.com' }));
+
 app.use(cookieParser());
 app.use(logger);
-
+app.use((req, res, next) => {
+    console.log(`Received request: ${req.method} ${req.url}`);
+    console.log('Headers:', req.headers);
+    next();
+  });
+  
 console.log(process.env.NODE_ENV);
 
 connectDB();
@@ -49,12 +61,12 @@ app.use('/User', userRoutes);
 app.use('/contacts', contactRoutes);
 app.use('/rating', ratingRoutes);
 app.use('/links', linkRoutes);
-
+//app.use('/data', dataRoutes); // New route
 // Add the /data route here
-app.get('/data', (req, res) => {
+{/*app.get('/data', (req, res) => {
     console.log('Data endpoint hit');
     res.json({ message: 'Data fetched successfully', data: [] });
-});
+});*/}
 
 app.get('/', (req, res) => {
     console.log(req);
