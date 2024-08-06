@@ -13,12 +13,11 @@ import ratingRoutes from './routers/ratingRoutes.js';
 import linkRoutes from './routers/linkRoutes.js'; // Ensure this is correctly imported
 import http from 'http';
 require('dotenv').config()
-const express = require('express')
+
 const path = require('path')
 const { logger, logEvents } = require('./middleware/logger')
 const errorHandler = require('./middleware/errorHandler')
 const cookieParser = require('cookie-parser')
-const cors = require('cors')
 const corsOptions = require('./config/corsOptions')
 const connectDB = require('./config/dbConn')
 const mongoose = require('mongoose')
