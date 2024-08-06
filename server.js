@@ -51,7 +51,7 @@ app.use('/links', linkRoutes);
 
 app.get('/', (req, res) => {
     console.log(req);
-    return res.status(200).send('Welcome To TaxiGo');
+    return res.status(200).send('Welcome To MedixPlus');
 });
 
 const server = http.createServer(app);

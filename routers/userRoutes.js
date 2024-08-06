@@ -36,8 +36,6 @@ router.get('/email', async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch user email', error: error.message });
   }
 });
-
-
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   console.log(`Login attempt with email: ${email} and password: ${password}`);
@@ -55,6 +53,7 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Failed to login', error: error.message });
   }
 });
+
 
 router.delete('/:id', async (req, res) => {
   try {
