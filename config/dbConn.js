@@ -1,3 +1,4 @@
+//backend\config\dbConn.js
 import mongoose from 'mongoose';
 
 const connectDB = async () => {

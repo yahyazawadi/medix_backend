@@ -1,5 +1,3 @@
-// server.js
-
 import 'dotenv/config';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -14,7 +12,6 @@ import contactRoutes from './routers/contactRoutes.js';
 import ratingRoutes from './routers/ratingRoutes.js';
 import linkRoutes from './routers/linkRoutes.js';
 import http from 'http';
-import path from 'path';
 import logger from './middleware/logger.js';
 
 import errorHandler from './middleware/errorHandler.js';
@@ -26,16 +23,14 @@ import logEvents from './middleware/logger2.js';
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+//app.use(cors(corsOptions)); // Apply CORS with options here
+app.use(cors({ origin: 'https://medix-backend-k0q1.onrender.com'}));
+app.use(cookieParser());
+app.use(logger);
 
 console.log(process.env.NODE_ENV);
 
 connectDB();
-
-app.use(logger);
-
-app.use(cors(corsOptions));
-app.use(cookieParser());
 
 mongoose.connect(process.env.DATABASE_URI, {
     useNewUrlParser: true,
@@ -44,6 +39,7 @@ mongoose.connect(process.env.DATABASE_URI, {
 .then(() => console.log('Connected to DB'))
 .catch(error => console.error('Connection to DB failed:', error));
 
+// Define your routes
 app.use('/Admin', adminRoutes);
 app.use('/Driver', driverRoutes);
 app.use('/History', historyRoutes);

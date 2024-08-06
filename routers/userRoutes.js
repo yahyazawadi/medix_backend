@@ -1,3 +1,4 @@
+//backend\routers\userRoutes.js
 import express from 'express';
 import User from '../models/User.js';
 
@@ -36,16 +37,21 @@ router.get('/email', async (req, res) => {
   }
 });
 
+
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
+  console.log(`Login attempt with email: ${email} and password: ${password}`);
   try {
     const user = await User.findOne({ email });
-    if (user && user.password === password) 
-      res.json({ success: true, message: 'Login successful' });
-    else {
+    if (user && user.password === password) {
+      console.log('Login successful');
+      res.json({ success: true, message: 'Login successful', user });
+    } else {
+      console.log('Invalid email or password');
       res.json({ success: false, message: 'Invalid email or password' });
     }
   } catch (error) {
+    console.error('Failed to login:', error);
     res.status(500).json({ message: 'Failed to login', error: error.message });
   }
 });

@@ -1,0 +1,14 @@
+20240806	06:49:23	528794e2-c5dd-4458-9ce8-207c99737a8b	Error: Not allowed by CORS	GET	/backend/data	http://localhost:3000
+20240806	06:49:23	d8ea41b4-d0f1-41be-9870-5d1eb20c7c22	Error: Not allowed by CORS	GET	/backend/data	http://localhost:3000
+20240806	06:49:29	1fefc972-ffb0-4376-b72c-57adf0fe9569	Error: Not allowed by CORS	POST	/user/login	http://localhost:3000
+20240806	06:49:29	01ec12d8-2f06-45ab-94b1-1b024a415d06	Error: Not allowed by CORS	POST	/admin/login	http://localhost:3000
+20240806	06:55:50	ae7bf746-55bc-491f-828f-1171cfcd024d	Error: Not allowed by CORS	POST	/user/login	http://localhost:3000
+20240806	06:55:50	80b3a4c9-da78-4ec0-80d0-f656dbbca035	Error: Not allowed by CORS	POST	/admin/login	http://localhost:3000
+20240806	06:56:03	ef0f170b-4439-4e4a-9b37-4c2c74982345	Error: Not allowed by CORS	GET	/backend/data	http://localhost:3000
+20240806	06:56:03	e7d67e2e-6928-4ae2-a9d7-702375d8885d	Error: Not allowed by CORS	GET	/backend/data	http://localhost:3000
+20240806	06:56:15	04bd04c2-0311-4ddb-ab7b-2a9196fee2c6	Error: Not allowed by CORS	GET	/backend/data	http://localhost:3000
+20240806	06:56:15	33b8729c-8faa-4e48-a2a8-60cb9b9c40ce	Error: Not allowed by CORS	GET	/backend/data	http://localhost:3000
+20240806	07:04:11	e87e72ab-23f6-474f-8bee-0c2f84b50648	Error: Not allowed by CORS	GET	/backend/data	http://localhost:3000
+20240806	07:04:11	a83809fa-6d8a-4562-81d8-35fa281f4cfd	Error: Not allowed by CORS	GET	/backend/data	http://localhost:3000
+20240806	07:04:28	05fecc00-237e-4e6c-a6d0-a784279d8ca0	Error: Not allowed by CORS	POST	/user/login	http://localhost:3000
+20240806	07:04:28	7d4214cf-c0d2-4278-b12d-30cb32b7d0a7	Error: Not allowed by CORS	POST	/admin/login	http://localhost:3000

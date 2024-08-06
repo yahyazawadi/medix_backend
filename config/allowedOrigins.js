@@ -1,5 +1,6 @@
+//backend\config\allowedOrigins.js
 const allowedOrigins = [
-    'https://medix-frontend-i0pq.onrender.com/'
-]
-
+    'http://localhost:3000',
+    'https://medix-frontend-i0pq.onrender.com'
+];
 export default allowedOrigins;
