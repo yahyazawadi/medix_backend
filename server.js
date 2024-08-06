@@ -23,8 +23,9 @@ import logEvents from './middleware/logger2.js';
 const app = express();
 
 app.use(express.json());
-//app.use(cors(corsOptions)); // Apply CORS with options here
-app.use(cors({ origin: 'https://medix-backend-k0q1.onrender.com'}));
+// Apply CORS with options here
+app.use(cors(corsOptions));
+// app.use(cors({ origin: 'https://medix-backend-k0q1.onrender.com' }));
 app.use(cookieParser());
 app.use(logger);
 
@@ -48,6 +49,12 @@ app.use('/User', userRoutes);
 app.use('/contacts', contactRoutes);
 app.use('/rating', ratingRoutes);
 app.use('/links', linkRoutes);
+
+// Add the /data route here
+app.get('/data', (req, res) => {
+    console.log('Data endpoint hit');
+    res.json({ message: 'Data fetched successfully', data: [] });
+});
 
 app.get('/', (req, res) => {
     console.log(req);
