@@ -1,14 +1,12 @@
+import { v4 as uuidv4 } from 'uuid';
 import { format } from 'date-fns';
-import pkg from 'uuid';
 import fs from 'fs';
 import fsPromises from 'fs/promises';
 import path from 'path';
 
-const { v4: uuid } = pkg;
-
 const logEvents = async (message, logFileName) => {
     const dateTime = format(new Date(), 'yyyyMMdd\tHH:mm:ss');
-    const logItem = `${dateTime}\t${uuid()}\t${message}\n`;
+    const logItem = `${dateTime}\t${uuidv4()}\t${message}\n`;
 
     try {
         if (!fs.existsSync(path.join(path.resolve(), 'logs'))) {
@@ -26,5 +24,4 @@ const logger = (req, res, next) => {
     next();
 };
 
-//export { logEvents,  };
 export default logger;
