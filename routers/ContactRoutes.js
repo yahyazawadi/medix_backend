@@ -35,5 +35,5 @@ router.get('/', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
-
+//plz work dude cmon
 export default router;
