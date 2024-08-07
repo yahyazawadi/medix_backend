@@ -16,8 +16,8 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get all links (changed from GET to POST)
-router.post('/all', async (req, res) => {
+// Get all links
+router.get('/', async (req, res) => {
   try {
     const links = await Link.find();
     res.status(200).json(links);
@@ -52,7 +52,7 @@ router.delete('/:id', async (req, res) => {
     }
     res.status(200).json({ message: 'Link deleted' });
   } catch (error) {
-    res.status500.json({ error: 'Failed to delete link' });
+    res.status(500).json({ error: 'Failed to delete link' });
   }
 });
 
