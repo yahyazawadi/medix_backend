@@ -1,4 +1,3 @@
-//backend\routers\userRoutes.js
 import express from 'express';
 import User from '../models/User.js';
 
@@ -15,7 +14,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+router.post('/all', async (req, res) => { // Changed from GET to POST
   try {
     const users = await User.find();
     res.status(200).json(users);
@@ -24,7 +23,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/email', async (req, res) => {
+router.post('/email', async (req, res) => { // Changed from GET to POST
   try {
     const user = await User.findOne();
     if (user) {
@@ -36,7 +35,8 @@ router.get('/email', async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch user email', error: error.message });
   }
 });
-router.post('/login', async (req, res) => {
+
+router.post('/login', async (req, res) => { // Already POST
   const { email, password } = req.body;
   console.log(`Login attempt with email: ${email} and password: ${password}`);
   try {
@@ -53,7 +53,6 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Failed to login', error: error.message });
   }
 });
-
 
 router.delete('/:id', async (req, res) => {
   try {
