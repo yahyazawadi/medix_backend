@@ -25,3 +25,4 @@ const logger = (req, res, next) => {
 };
 
 export default logEvents;
+//be\middleware\logger2.js

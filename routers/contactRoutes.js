@@ -1,12 +1,29 @@
-// routers/ContactRoutes.js
 import express from 'express';
 const router = express.Router();
 import Contact from '../models/Contact.js';
 
 // Create a new contact
 router.post('/', async (req, res) => {
-    const { firstName, lastName, email, password, mobileNumber, dateOfBirth, gender, location } = req.body;
-    
+    const { 
+        firstName, lastName, email, password, mobileNumber, dateOfBirth, 
+        gender, location, major, university, academicLevel, yearOfUniversity 
+    } = req.body;
+
+    console.log('Received Contact Data:', {
+        firstName,
+        lastName,
+        email,
+        password,
+        mobileNumber,
+        dateOfBirth,
+        gender,
+        location,
+        major,
+        university,
+        academicLevel,
+        yearOfUniversity
+    });
+
     const newContact = new Contact({
         firstName,
         lastName,
@@ -15,7 +32,11 @@ router.post('/', async (req, res) => {
         mobileNumber,
         dateOfBirth,
         gender,
-        location
+        location,
+        major,
+        university,
+        academicLevel,
+        yearOfUniversity
     });
 
     try {
@@ -35,5 +56,5 @@ router.get('/', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
-//plz work dude cmon
+
 export default router;

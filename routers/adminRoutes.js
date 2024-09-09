@@ -1,3 +1,4 @@
+//be\routers\adminRoutes.js
 import express from 'express';
 import Admin from '../models/Admin.js';
 

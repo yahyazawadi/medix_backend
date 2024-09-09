@@ -1,9 +1,11 @@
+
 import 'dotenv/config';
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import { PORT } from './config.js';
 import adminRoutes from './routers/adminRoutes.js';
+import authRoutes from './routers/authRoutes.js';
 import driverRoutes from './routers/driverRoutes.js';
 import historyRoutes from './routers/historyRoutes.js';
 import taxiStandRoutes from './routers/taxiStandRoutes.js';
@@ -12,13 +14,14 @@ import contactRoutes from './routers/contactRoutes.js';
 import ratingRoutes from './routers/ratingRoutes.js';
 import linkRoutes from './routers/linkRoutes.js';
 import http from 'http';
-import logger from './middleware/logger.js';
+import { logger, logEvents } from './middleware/logger.js'; // Named imports for both functions
+//import logger from './middleware/logger.js';
+//import logEvents from './middleware/logger2.js';
 //import dataRoutes from './routers/dataRoutes.js'; // New import
 import errorHandler from './middleware/errorHandler.js';
 import cookieParser from 'cookie-parser';
 //import corsOptions from './config/corsOptions.js';
 import connectDB from './config/dbConn.js';
-import logEvents from './middleware/logger2.js';
 
 const app = express();
 const corsOptions = {
@@ -31,13 +34,13 @@ const corsOptions = {
 app.use(express.json());
 // Apply CORS with options here
 app.use(cors(corsOptions));
-// app.use(cors({ origin: 'https://medix-backend-k0q1.onrender.com' }));
+// app.use(cors({ origin: 'http://localhost:5001' }));
 
 app.use(cookieParser());
 app.use(logger);
 app.use((req, res, next) => {
     console.log(`Received request: ${req.method} ${req.url}`);
-    console.log('Headers:', req.headers);
+    //console.log('Headers:', req.headers);
     next();
   });
   
@@ -51,8 +54,9 @@ mongoose.connect(process.env.DATABASE_URI, {
 })
 .then(() => console.log('Connected to DB'))
 .catch(error => console.error('Connection to DB failed:', error));
-
+  
 // Define your routes
+app.use('/auth', authRoutes);
 app.use('/Admin', adminRoutes);
 app.use('/Driver', driverRoutes);
 app.use('/History', historyRoutes);
@@ -61,12 +65,8 @@ app.use('/User', userRoutes);
 app.use('/contacts', contactRoutes);
 app.use('/rating', ratingRoutes);
 app.use('/links', linkRoutes);
-//app.use('/data', dataRoutes); // New route
-// Add the /data route here
-{/*app.get('/data', (req, res) => {
-    console.log('Data endpoint hit');
-    res.json({ message: 'Data fetched successfully', data: [] });
-});*/}
+
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
     console.log(req);
@@ -88,4 +88,22 @@ mongoose.connection.once('open', () => {
 mongoose.connection.on('error', err => {
     console.log(err);
     logEvents(`${err.no}: ${err.code}\t${err.syscall}\t${err.hostname}`, 'mongoErrLog.log');
+});/*
+axios.post('http://localhost:3000/auth', {
+    email: 'example@example.com',
+    password: 'yourPassword'
+}, {
+    withCredentials: true // This is required to send cookies
+});*/
+import User from './models/User.js'; // Make sure the path is correct
+
+mongoose.connection.once('open', async () => {
+    
+    // Fetch all users and log them
+    try {
+        const allUsers = await User.find(); // Fetch all users from the 'Users' collection
+        console.log('All Users:', allUsers); // Log all users
+    } catch (error) {
+        console.error('Error fetching users:', error);
+    }
 });
