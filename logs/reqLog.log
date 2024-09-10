@@ -475,3 +475,15 @@
 20240909	18:52:42	273058cf-b9bc-44e8-8124-eba9ecfa7f1d	POST	/contacts	http://localhost:3000
 20240909	18:53:08	af29eba5-a376-4808-b3c0-b96c7cf3c2af	GET	/contacts	http://localhost:3000
 20240909	18:53:08	6e695f46-f8f7-41c2-b3bc-a7c837cff425	GET	/contacts	http://localhost:3000
+20240909	19:17:55	a88cb215-b353-42f7-83dd-67cbce296825	GET	/User	http://localhost:3000
+20240909	19:17:56	b9b4c4ea-3b90-4f5d-a960-5b60bb62af50	GET	/User	http://localhost:3000
+20240909	19:22:03	6dd536ff-b9a7-4be5-9d7a-9b478eb40a22	POST	/user/login	http://localhost:3000
+20240909	19:22:03	4033b4cc-4206-43b6-b064-bd101f8325e0	POST	/admin/login	http://localhost:3000
+20240909	19:22:49	e3f7d4ca-9a31-4cb4-a75e-795dc282aad4	POST	/user/login	http://localhost:3000
+20240909	19:22:49	e1c776d0-2172-48ae-977e-bd42afb0b44f	POST	/admin/login	http://localhost:3000
+20240909	19:27:53	66b743eb-8e99-4ea9-8267-b382e8668b03	POST	/user/login	http://localhost:3000
+20240909	19:27:53	3294b5bd-3187-4609-a87e-c59e1dc29c2e	POST	/admin/login	http://localhost:3000
+20240910	08:28:11	5aef46db-347f-4d41-8ffb-7515e63632d9	GET	/	undefined
+20240910	08:28:12	5eebd0e8-8e94-4485-8ce2-f52e92a641de	GET	/favicon.ico	undefined
+20240910	08:29:03	c2945539-9946-46bf-9657-56add847bd91	GET	/	undefined
+20240910	08:30:25	52ba9463-989b-4c36-8620-7ebc8efb37f9	GET	/	undefined

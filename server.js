@@ -69,9 +69,37 @@ app.use('/links', linkRoutes);
 app.use(cookieParser());
 
 app.get('/', (req, res) => {
-    console.log(req);
-    return res.status(200).send('Welcome To MedixPlus');
+    res.send(`
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Welcome To MedixPlus</title>
+            <style>
+                body {
+                    margin: 0;
+                    height: 100vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: black;
+                    color: white;
+                    font-family: Arial, sans-serif;
+                }
+                h1 {
+                    font-size: 3em;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Welcome To MedixPlus</h1>
+        </body>
+        
+        </html>
+    `);
 });
+
 
 const server = http.createServer(app);
 
