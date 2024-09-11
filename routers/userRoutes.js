@@ -94,25 +94,33 @@ router.delete('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   try {
-    const { 
-      firstName, lastName, email, password, mobileNumber, dateOfBirth, 
-      gender, location, major, university, academicLevel, yearOfUniversity 
-    } = req.body;
+    const { id } = req.params;
 
-    const updatedUser = await User.findByIdAndUpdate(
-      id, 
-      { 
-        firstName, lastName, email, password, mobileNumber, dateOfBirth,
-        gender, location, major, university, academicLevel, yearOfUniversity
-      }, 
-      { new: true }
-    );
+    // Destructure all fields except password
+    const { firstName, lastName, email, mobileNumber, dateOfBirth, gender, location, major, university, academicLevel, yearOfUniversity } = req.body;
 
-    res.status(200).json({ message: 'User updated successfully', user: updatedUser });
+    // Find the existing user to retain the current password
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Retain the existing hashed password
+    const updatedUser = {
+      firstName, lastName, email, mobileNumber, dateOfBirth,
+      gender, location, major, university, academicLevel, yearOfUniversity,
+      password: user.password // Retain the old password
+    };
+
+    // Update the user with the new details
+    const result = await User.findByIdAndUpdate(id, updatedUser, { new: true });
+
+    res.status(200).json({ message: 'User updated successfully', user: result });
   } catch (error) {
     res.status(500).json({ message: 'Failed to update user', error: error.message });
   }
 });
+
 
 
 export default router;

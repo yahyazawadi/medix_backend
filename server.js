@@ -25,7 +25,7 @@ import connectDB from './config/dbConn.js';
 
 const app = express();
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://medix-frontend-i0pq.onrender.com'],
+    origin: ['http://localhost:3000','http://localhost:3001','http://localhost:3002','http://localhost:3003', 'https://medix-frontend-i0pq.onrender.com'],
     credentials: true, // Allow credentials (cookies, authorization headers, etc.) to be sent
     optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
   };
